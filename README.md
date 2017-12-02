@@ -1,7 +1,9 @@
 # 简书站内搜索
 
-
 代码在 Python 2.7 中测试通过。
+
+## 介绍
+[站内搜索实战](http://www.letiantian.me/site-search-tutorial/)
 
 ## elastic search
 
@@ -26,6 +28,6 @@ elastic 版本 6.0.0.
 pip install elasticsearch==6.0.0 --user
 pip install uniout --user
 pip install requests --user
-pip install beautifulsoup4
+pip install beautifulsoup4 --user
 ```
 
