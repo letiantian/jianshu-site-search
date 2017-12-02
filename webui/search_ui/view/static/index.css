@@ -1,0 +1,12 @@
+#result {
+    margin-top:20px;
+}
+
+.result-item {
+    margin-bottom:20px;
+}
+
+.result-item em {
+    color: #C00;
+    font-style: normal;
+}
