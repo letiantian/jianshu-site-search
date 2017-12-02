@@ -1,10 +1,14 @@
 #coding:utf-8
 
+'''
+抓取某个用户的所有文章，按文章id将文章对应的网页保存到 data 目录。
+'''
 import os
 import requests
 import time
 from bs4 import BeautifulSoup
 import codecs
+import sys
 
 def extract_article_id_set(html_content):
     '''
@@ -20,6 +24,8 @@ def extract_article_id_set(html_content):
 
 def get_article_id_set(user):
     '''
+    关于user：这里是指简书url中给出的ID。如
+   
     http://www.jianshu.com/u/7fe2e7bb7d47?order_by=shared_at&page=10
 
     user 是 7fe2e7bb7d47
@@ -70,5 +76,12 @@ def download_articles(id_set):
 
 
 if __name__ == '__main__':
-    id_set = get_article_id_set('7fe2e7bb7d47')
-    download_articles(id_set)
+    if len(sys.argv) == 2:
+        user_id = sys.argv[1]
+        article_id_set = get_article_id_set(user_id)
+        download_articles(article_id_set)
+    else:
+        print '''
+            示例：
+            python crawler.py 7fe2e7bb7d47
+        '''

@@ -1,11 +1,19 @@
 # coding: utf-8
 
-# 高亮搜索结果
+# 从 titile 和 content 中搜索，得到前 5 条结果
+# 高亮 elasticsearch 搜索结果
 
+import sys
 from elasticsearch import Elasticsearch
 
-
-keywords = '人民的名义'
+if len(sys.argv) >= 2:
+    keywords = ' '.join(sys.argv[1:])
+else:
+    print '''
+    示例：
+    python es_hl_search.py 人民的名义
+    '''
+    sys.exit(0)
 
 es = Elasticsearch([{'host':'127.0.0.1', 'port': 9200}])
 

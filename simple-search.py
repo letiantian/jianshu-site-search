@@ -13,10 +13,6 @@ def as_unicode(text):
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-
-
-
-
 keywords = sys.argv[1:]
 print '你输入了：', ' '.join(keywords)
 
@@ -24,7 +20,7 @@ print '你输入了：', ' '.join(keywords)
 KEY_URL     = 'KEY_URL'
 KEY_TITLE   = 'KEY_TITLE'
 KEY_CONTENT = 'KEY_CONTENT'
-KEY_STORE   = 'KEY_STORE'
+KEY_SCORE   = 'KEY_SCORE'
 
 data = []
 
@@ -41,11 +37,10 @@ for filename in os.listdir(os.path.join(dir_path, 'data')):
         item[KEY_URL] = as_unicode(item[KEY_URL])
         item[KEY_TITLE] = as_unicode(item[KEY_TITLE])
         item[KEY_CONTENT] = as_unicode(item[KEY_CONTENT])
-        item[KEY_STORE] = 0
+        item[KEY_SCORE] = 0
 
         data.append(item)
 
-# print data
 
 # 开始搜索
 result = []
@@ -54,15 +49,19 @@ for item in data:
         kw = as_unicode(kw)
         # if kw.lower() in item[KEY_TITLE].lower() or kw.lower() in item[KEY_CONTENT].lower():
         #     print '命中了： ', item[KEY_URL] 
-        if kw in item[KEY_TITLE]:
-            item[KEY_STORE] += 2
-        if kw in item[KEY_CONTENT]:
-            item[KEY_STORE] += 1
-    if item[KEY_STORE] > 0:
+        if kw.lower() in item[KEY_TITLE].lower():
+            item[KEY_SCORE] += 2
+        if kw.lower() in item[KEY_CONTENT].lower():
+            item[KEY_SCORE] += 1
+    if item[KEY_SCORE] > 0:
         result.append(item)
 
-
-for item in sorted(result, key=lambda item: item[KEY_STORE], reverse=True):
-    print '命中了： ', item[KEY_URL], item[KEY_TITLE], '分数：', item[KEY_STORE]
+# 排序输出
+print '搜索结果：'
+for item in sorted(result, key=lambda item: item[KEY_SCORE], reverse=True):
+    print
+    print 'url:   ', item[KEY_URL]
+    print 'title: ', item[KEY_TITLE]
+    print 'score: ', item[KEY_SCORE]
     
 
