@@ -1,6 +1,12 @@
-elastic 版本 6.0.0.
+# 简书站内搜索
+
+
+代码在 Python 2.7 中测试通过。
 
 ## elastic search
+
+elastic 版本 6.0.0.
+
 下载最新的6.0.0版本。
 
 安装ik分词：
