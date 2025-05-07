@@ -3,7 +3,7 @@
 代码在 Python 2.7 中测试通过。
 
 ## 介绍
-[站内搜索实战](http://www.letiantian.me/site-search-tutorial/)
+[站内搜索实战](https://www.letiantian.xyz/p/101794.html)
 
 ## elastic search
 
